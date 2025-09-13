@@ -334,10 +334,10 @@
             const durationEl = document.getElementById('duration');
             let isPlaying = false;
             
-            // Установка громкости на 50% при загрузке
+
             audio.volume = 0.5;
             
-            // Функция запуска experience
+
             function startExperience() {
                 startScreen.classList.add('fade-out');
                 
@@ -351,14 +351,14 @@
                 }, 1500);
             }
             
-            // Форматирование времени в мм:сс
+
             function formatTime(seconds) {
                 const minutes = Math.floor(seconds / 60);
                 const secs = Math.floor(seconds % 60);
                 return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
             }
             
-            // Обновление прогресс-бара
+
             function updateProgress() {
                 const { duration, currentTime } = audio;
                 const progressPercent = (currentTime / duration) * 100;
@@ -371,7 +371,7 @@
                 }
             }
             
-            // Установка прогресса при клике на прогресс-бар
+
             function setProgress(e) {
                 const width = this.clientWidth;
                 const clickX = e.offsetX;
@@ -379,7 +379,7 @@
                 audio.currentTime = (clickX / width) * duration;
             }
             
-            // Обработчики событий для запуска
+
             startButton.addEventListener('click', startExperience);
             document.addEventListener('keypress', function(e) {
                 if (e.code === 'Space' || e.code === 'Enter') {
@@ -387,7 +387,7 @@
                 }
             });
             
-            // Обработчик кнопки воспроизведения
+
             playBtn.addEventListener('click', function() {
                 if (isPlaying) {
                     audio.pause();
@@ -399,18 +399,18 @@
                 isPlaying = !isPlaying;
             });
             
-            // Контроль громкости
+
             volumeSlider.addEventListener('input', function() {
                 audio.volume = volumeSlider.value;
             });
             
-            // Обновление времени и прогресса
+
             audio.addEventListener('timeupdate', updateProgress);
             
-            // Перемотка при клике на прогресс-бар
+
             progressContainer.addEventListener('click', setProgress);
             
-            // Сброс времени при окончании трека
+
             audio.addEventListener('ended', function() {
                 playBtn.innerHTML = '▶';
                 progressBar.style.width = '0%';
@@ -427,4 +427,5 @@
         });
     </script>
 </body>
+
 </html>
